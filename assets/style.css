@@ -103,6 +103,11 @@
   text-transform: uppercase;
   margin-top: 1rem;
   cursor: pointer;
+  transition: width 1s linear 0ms;
+}
+.hero button:hover{
+  width: 300px;
+  text-decoration: underline wavy #fff;
 }
 main {
   display: flex;
@@ -150,6 +155,10 @@ main h3 {
 .new_card {
   border-radius: 10px;
   background-color: var(--tertiary-color);
+}
+
+.new_card:hover{
+  transform: rotateX(0deg) rotateY(23deg) rotateZ(5deg);
 }
 .image {
   width: 100%;
@@ -305,6 +314,4 @@ th.gridjs-th {
     height: 375px;
   }
 }
-/* @media (max-width: 1000px) {
- 
-} */
+
