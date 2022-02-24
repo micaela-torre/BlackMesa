@@ -143,8 +143,8 @@ main h3 {
 #container_news_cards {
   width: 100%;
   display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(4, 280px);
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   grid-template-rows: 400px;
 }
 .new_card {
@@ -304,22 +304,7 @@ th.gridjs-th {
   .new_card {
     height: 375px;
   }
-  .styled_table {
-    margin-left: -1.4rem;
-  }
-  .gridjs-wrapper {
-    width: 355px;
-  }
 }
-@media (max-width: 1000px) {
-  .gridjs-wrapper {
-    width: 575px;
-    height: 300px;
-  }
-  .gridjs-wrapper > * {
-    width: 30%;
-  }
-  td.gridjs-td {
-    padding: 10px;
-  }
-}
+/* @media (max-width: 1000px) {
+ 
+} */

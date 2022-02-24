@@ -63,9 +63,6 @@ function createCard(cards) {
       getDate(article.published_at.date, "onlyDate"),
     ]),
     style: {
-      table: {
-        width: "80%",
-      },
       th: {
         "text-align": "center",
       },
