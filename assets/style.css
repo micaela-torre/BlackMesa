@@ -1,17 +1,20 @@
-@import "https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Work+Sans:wght@400;600&display=swap";
+@import url("https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;700&family=Work+Sans:wght@400;600&display=swap");
+
 :root {
-  --primary-color: #fff;
+  --primary-color: rgb(255, 255, 255);
   --second-color: #cb7820;
   --tertiary-color: #e5e5e5;
-  --oswald: Oswald, sans-serif;
+  --oswald: "Oswald", sans-serif;
   --work-sans: "Work Sans", sans-serif;
 }
+
 * {
-  margin: 0;
-  padding: 0;
+  margin: 0%;
+  padding: 0%;
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
 .nav_container {
   display: flex;
   align-items: center;
@@ -32,6 +35,7 @@
     opacity: 0;
     transform: translateX(-250px) rotate(-200deg);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0) rotate(0deg);
@@ -39,7 +43,7 @@
 }
 .nav_container a {
   text-decoration: none;
-  color: #000;
+  color: black;
   margin: 0 0.5rem;
   font-size: 24px;
 }
@@ -53,7 +57,7 @@
   border-bottom: 4px solid;
 }
 .container_hero {
-  background-image: url(./Rectangle.png);
+  background-image: url("./Rectangle.png");
   background-position: center;
   background-size: cover;
   width: 100%;
@@ -76,6 +80,7 @@
   font-size: 60px;
   animation: opacityAnim 1s ease 10ms 2 normal backwards;
 }
+
 @keyframes opacityAnim {
   50%,
   100% {
@@ -87,6 +92,7 @@
     opacity: 0;
   }
 }
+
 .hero {
   padding: 1rem;
   width: 45%;
@@ -98,6 +104,7 @@
   height: 90vh;
   gap: 2rem;
 }
+
 .hero p {
   color: var(--second-color);
   font-family: var(--oswald);
@@ -110,8 +117,9 @@
 .container_title {
   line-height: 1;
 }
+
 .container_title svg {
-  animation: animLogo 2s ease 0 1 normal both;
+  animation: animLogo 2s ease 0s 1 normal both;
 }
 @keyframes animLogo {
   0% {
@@ -119,36 +127,44 @@
     opacity: 0;
     transform: translateY(-250px);
   }
+
   38% {
     animation-timing-function: ease-out;
     opacity: 1;
     transform: translateY(0);
   }
+
   55% {
     animation-timing-function: ease-in;
     transform: translateY(-65px);
   }
+
   72% {
     animation-timing-function: ease-out;
     transform: translateY(0);
   }
+
   81% {
     animation-timing-function: ease-in;
     transform: translateY(-28px);
   }
+
   90% {
     animation-timing-function: ease-out;
     transform: translateY(0);
   }
+
   95% {
     animation-timing-function: ease-in;
     transform: translateY(-8px);
   }
+
   100% {
     animation-timing-function: ease-out;
     transform: translateY(0);
   }
 }
+
 .hero button {
   background-color: var(--second-color);
   border: none;
@@ -162,7 +178,7 @@
   text-transform: uppercase;
   margin-top: 1rem;
   cursor: pointer;
-  transition: width 1s linear 0;
+  transition: width 1s linear 0ms;
 }
 .hero button:hover {
   width: 300px;
@@ -171,10 +187,13 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+main {
   width: 100%;
   padding: 2rem;
   gap: 1rem;
 }
+
 main h3 {
   font-family: var(--oswald);
   font-weight: 700;
@@ -211,18 +230,20 @@ main h3 {
   border-radius: 10px;
   background-color: var(--tertiary-color);
   box-shadow: -17px 5px 10px 1px rgba(0, 0, 0, 0.21);
-  animation: cards_news 2s ease 10ms 1 normal backwards;
+  animation: cards_news 1s ease 10ms 2 normal backwards;
 }
 @keyframes cards_news {
   0% {
     opacity: 0;
     transform: translateX(-250px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
   }
 }
+
 .image {
   width: 100%;
   height: 194px;
@@ -252,16 +273,19 @@ p.description {
   font-size: 14px;
   margin: 0 0.2rem;
 }
+
 p.time {
   padding: 5px 10px;
-  background-color: #000;
+  background-color: black;
   color: var(--primary-color);
   border-radius: 5px;
 }
+
 .container_articles,
 .last_news {
   width: 85vw;
 }
+
 .container_articles input::placeholder {
   padding-left: 2rem;
   font-size: 18px;
@@ -272,7 +296,7 @@ p.time {
   outline: none;
   border-radius: 5px;
   border: 1px solid;
-  background-image: url(./lupa.png);
+  background-image: url("./lupa.png");
   background-size: 18px;
   background-repeat: no-repeat;
   background-position: 8px 5px;
@@ -280,6 +304,7 @@ p.time {
 .styled_table {
   font-family: var(--oswald);
 }
+
 th.gridjs-th .gridjs-th-content {
   text-transform: uppercase;
   color: var(--primary-color);
@@ -297,9 +322,11 @@ th.gridjs-th {
 .gridjs-wrapper::-webkit-scrollbar {
   width: 8px;
 }
+
 .gridjs-wrapper::-webkit-scrollbar-track {
   background: var(--tertiary-color);
 }
+
 .gridjs-wrapper::-webkit-scrollbar-thumb {
   background-color: var(--second-color);
   border-radius: 5px;
@@ -319,11 +346,13 @@ th.gridjs-th {
 .d-none {
   display: none;
 }
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
   }
 }
+
 @media (max-width: 600px) {
   .nav_container {
     height: 6rem;
@@ -363,7 +392,7 @@ th.gridjs-th {
     width: max-content;
   }
   main {
-    padding: 0;
+    padding: 0%;
   }
   .new_card {
     height: 375px;
