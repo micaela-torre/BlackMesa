@@ -6,20 +6,27 @@ fetch(
   "https://fakerapi.it/api/v1/custom?title=text&image=image&short_description=text&published_at=date_time&last_news=boolean&_quantity=100"
 )
   .then((response) => response.json())
-  .then((response) => {
-    createCard(response.data), (loading = false);
-  })
+  .then((response) => getNews(response.data))
   .catch((e) => console.log(e));
 
-function createCard(cards) {
-  let lastNews = [...cards];
+function getNews(news) {
+  //hago una copia de la respuesta de la api
+  let lastNews = [...news];
+
+  //ordeno el array de menor a mayor segun su fecha
   lastNews.sort(
     (a, b) =>
       new Date(b.published_at.date).getTime() -
       new Date(a.published_at.date).getTime()
   );
+
+  //filtro el array para que me traiga solo los objetos que en su propiedad last_news sea true
   lastNews = lastNews.filter((news) => news.last_news === true);
+
+  //me traigo las primeras 4 posiciones
   lastNews = lastNews.slice(0, 4);
+
+  //creacion dinamica de las cards , consumiendo el array ya filtrado con la información que necesito
   lastNews.forEach((card) => {
     const newCard = document.createElement("div");
     newCard.classList.add("new_card");
@@ -28,7 +35,7 @@ function createCard(cards) {
     const date = document.createElement("p");
     date.classList.add("time");
     const description = document.createElement("div");
-    description.classList.add("newDescription");
+    description.classList.add("new_description");
     const newTitle = document.createElement("h4");
     newTitle.classList.add("new_title");
     const shortDescription = document.createElement("p");
@@ -46,9 +53,11 @@ function createCard(cards) {
     cardsContainer.appendChild(newCard);
   });
 
+  //llamo al elemento por su id y le asigno la clase d-none, esto hace que mientras se están creando las cards me muestre un preloader y una vez que eso termine, la clase que le puse le aplica un display:none que hace que desaparesca
   const preloader = document.getElementById("preloader");
   preloader.classList.add("d-none");
 
+  //creacion de datatable con todas las noticias, utilizando la libreria grid.js
   new gridjs.Grid({
     columns: ["Name", "Description", "Date"],
     search: true,
@@ -57,7 +66,7 @@ function createCard(cards) {
     fixedHeader: true,
     height: "500px",
     wide: true,
-    data: cards.map((article) => [
+    data: news.map((article) => [
       article.title,
       article.short_description,
       getDate(article.published_at.date, "onlyDate"),
@@ -73,6 +82,7 @@ function createCard(cards) {
   }).render(document.getElementById("table_date"));
 }
 
+//está funcion recibe como uno de sus parametros la fecha tal cual como se encuentran en el endpoint y lo formatea a una fecha legible
 function getDate(date, onlyDate) {
   let newsDate = new Date(date);
   let day = newsDate.getDate();
